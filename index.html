@@ -273,7 +273,7 @@ analysis, and data science in general.
                 </div>
              </div>
           <div class="col">
-    <form action="https://docs.google.com/forms/d/e/1FAIpQLSftbYt-b6H_g_NNZCvzwmfsZEO83cqbCbWbhxzESvlKHB2Eag/formResponse" method="post" target="_blank">
+    <form id="contactForm">
         <div class="form-control">
             <div class="form-inputs">
                 <input type="text" class="input-field" name="entry.2000000000" placeholder="Name" required>
@@ -285,6 +285,32 @@ analysis, and data science in general.
             <div class="form-button">
                 <button type="submit" class="btn">Send <i class="uil uil-message"></i></button>
             </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevent the default form submission behavior
+
+        const formData = new FormData(this);
+
+        fetch('https://docs.google.com/forms/d/e/1FAIpQLSftbYt-b6H_g_NNZCvzwmfsZEO83cqbCbWbhxzESvlKHB2Eag/formResponse', {
+            method: 'POST',
+            body: formData,
+            mode: 'no-cors' // Prevent CORS errors
+        })
+        .then(response => {
+            // Handle the response here
+            alert('Your message has been sent successfully!');
+            document.getElementById('contactForm').reset(); // Reset the form after submission
+        })
+        .catch(error => {
+            alert('There was a problem with your submission. Please try again.');
+        });
+    });
+</script>
+
         </div>
     </form>
 </div>
