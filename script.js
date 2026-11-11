@@ -28,7 +28,7 @@ function headerShadow() {
 
 /* ----- TYPING EFFECT ----- */
 var typingEffect = new Typed(".typedText", {
-  strings: ["a Data Scientist", "a Machine Learning engineer", "a Cyber Security Analyst"],
+  strings: ["a Software Developer", "a Data Scientist", "a Machine Learning Engineer", "a Cyber Security Analyst"],
   loop: true,
   typeSpeed: 100,
   backSpeed: 80,
@@ -53,6 +53,7 @@ sr.reveal('.featured-image', { delay: 300 });
 
 /* -- PROJECT BOX -- */
 sr.reveal('.project-box', { interval: 200 });
+sr.reveal('.project-filters', {});
 
 /* -- HEADINGS -- */
 sr.reveal('.top-header', {});
@@ -101,3 +102,19 @@ function scrollActive() {
 }
 
 window.addEventListener('scroll', scrollActive);
+
+/* ----- PROJECT FILTERS ----- */
+const filterBtns = document.querySelectorAll('.filter-btn');
+const projectCards = document.querySelectorAll('.project-card');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    projectCards.forEach(card => {
+      const cats = card.dataset.category.split(' ');
+      card.classList.toggle('hide', filter !== 'all' && !cats.includes(filter));
+    });
+  });
+});

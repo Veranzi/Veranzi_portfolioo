@@ -187,7 +187,7 @@ nav{
     margin-block: 20px;
 }
 .typedText{
-    text-transform: capitalize;
+    text-transform: none;
     color: var(--text-color-third);
 }
 .featured-text-info{
@@ -714,49 +714,244 @@ footer{
     z-index: 2;
 }
 
-/* Styles for individual project cards */
-.projects-list {
-    display: flex;
+/* ----- HERO BUTTONS ----- */
+.featured-text-btn{
+    align-items: center;
     flex-wrap: wrap;
-    gap: 20px; /* Adjusts spacing between project cards */
-    margin-top: 20px; /* Space between statistics and project cards */
+}
+.featured-text-btn .btn,
+.outline-btn{
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+}
+.outline-btn{
+    background: transparent;
+    color: var(--first-color);
+    border: 2px solid var(--first-color);
+    padding: 10px 20px;
+}
+.outline-btn:hover{
+    background: var(--first-color);
+    color: var(--color-white);
 }
 
-.project-card {
-    background-color: #f9f9f9;
+/* ----- ABOUT LAYOUT ----- */
+.about-row{
+    align-items: flex-start;
+}
+.about-col{
+    width: 40%;
+}
+.about-btn .btn{
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    background: var(--first-color);
+    color: var(--color-white);
+    border-radius: 30px;
+}
+.about-btn .btn:hover{
+    background: var(--first-color-hover);
+}
+.about-info p{
+    line-height: 1.7;
+}
+
+/* ----- SKILLS GRID ----- */
+.skills-grid{
+    width: 60%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+.skills-grid .skills-box{
+    margin: 0;
+    padding: 20px;
+    background: var(--color-white);
+    border-radius: 16px;
+    box-shadow: 0 4px 14px var(--first-shadow-color);
+    transition: transform .3s, box-shadow .3s;
+}
+.skills-grid .skills-box:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 10px 22px rgba(110, 87, 224, 0.18);
+}
+.skills-grid .skills-header{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+.skills-grid .skills-header i{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+    color: var(--first-color);
+    background: rgba(110, 87, 224, 0.1);
+    border-radius: 10px;
+}
+.skills-grid .skills-header h3{
+    font-size: 16px;
+    margin: 0;
+    line-height: 1.3;
+}
+.skills-grid .skills-list{
+    gap: 8px;
+}
+.skills-grid .skills-list span{
+    font-size: 13px;
+    font-weight: 500;
+    padding: 4px 12px;
+    color: var(--first-color);
+    background: rgba(110, 87, 224, 0.1);
+    border-radius: 20px;
+}
+
+/* ----- PROJECT FILTERS ----- */
+.project-filters{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 4em 0 2em;
+}
+.filter-btn{
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 20px;
+    color: var(--text-color-second);
+    background: var(--color-white);
     border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 15px;
-    width: calc(33.333% - 20px); /* Three cards per row, adjust as needed */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s; /* Adds hover effect */
+    border-radius: 30px;
+    cursor: pointer;
+    transition: .3s;
+}
+.filter-btn:hover{
+    border-color: var(--first-color);
+    color: var(--first-color);
+}
+.filter-btn.active{
+    background: var(--first-color);
+    border-color: var(--first-color);
+    color: var(--color-white);
 }
 
-.project-card:hover {
-    transform: scale(1.05); /* Slightly enlarges the card on hover */
+/* ----- PROJECT CARDS ----- */
+.projects-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
 }
-
-.project-card h4 {
-    margin-bottom: 10px;
-    font-size: 1.5rem;
+.project-card{
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    background: var(--color-white);
+    border: 1px solid #eee;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px var(--first-shadow-color);
+    transition: transform .3s, box-shadow .3s;
 }
-
-.project-card p {
-    margin-bottom: 15px;
+.project-card:hover{
+    transform: translateY(-6px);
+    box-shadow: 0 12px 26px rgba(110, 87, 224, 0.18);
+}
+.project-card.hide{
+    display: none;
+}
+.project-card-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+.project-card-top i{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    font-size: 24px;
+    color: var(--color-white);
+    background: linear-gradient(135deg, var(--first-color), var(--text-color-third));
+    border-radius: 12px;
+}
+.project-type{
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-color-third);
+}
+.project-card h3{
+    margin-bottom: 8px;
+}
+.project-card p{
+    flex-grow: 1;
+    margin-bottom: 16px;
+    font-size: 14px;
+    line-height: 1.6;
     color: #666;
 }
-
-.project-card .btn {
-    display: inline-block;
-    padding: 10px 15px;
-    background-color: #007bff;
-    color: white;
+.project-tags{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 18px;
+}
+.project-tags span{
+    font-size: 12px;
+    padding: 3px 10px;
+    color: var(--text-color-second);
+    background: #f1f1f4;
+    border-radius: 20px;
+}
+.project-links{
+    display: flex;
+    gap: 18px;
+    padding-top: 14px;
+    border-top: 1px solid #eee;
+}
+.project-links a{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--first-color);
     text-decoration: none;
-    border-radius: 5px;
+    transition: .3s;
+}
+.project-links a:hover{
+    color: var(--first-color-hover);
+}
+.projects-more{
+    display: flex;
+    justify-content: center;
+    margin-top: 3em;
 }
 
-.project-card .btn:hover {
-    background-color: #0056b3;
+/* ----- RESPONSIVE FOR NEW SECTIONS ----- */
+@media only screen and (max-width: 1200px){
+    .about-row{
+        flex-direction: column;
+    }
+    .about-col, .skills-grid{
+        width: 100%;
+    }
 }
-
-this is what is to be deited
+@media only screen and (max-width: 600px){
+    .skills-grid{
+        grid-template-columns: 1fr;
+    }
+    .projects-list{
+        grid-template-columns: 1fr;
+    }
+}
